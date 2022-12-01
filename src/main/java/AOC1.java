@@ -1,24 +1,16 @@
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.stream.Stream;
 
 public class AOC1 {
     public static void main(String [] pArgs) throws IOException {
-      //  String fileName = "src/main/resources/aoc1.txt";
-// Open the file
         FileInputStream fstream = new FileInputStream("src/main/resources/aoc1.txt");
         BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
         String strLine;
         int firstSum = 0;
         int firstmax = 0;
-        int secondmax = 0;
-        int thirdmax = 0;
+        int secondmax;
+        int thirdmax;
 
-//Read File Line By Line
         while ((strLine = br.readLine()) != null)   {
-            // Print the content on the console
-           // System.out.println (strLine);
             if(strLine.equals("")){
                 if(firstSum>firstmax) {
                     firstmax = firstSum;
@@ -28,12 +20,9 @@ public class AOC1 {
                 firstSum += Integer.parseInt(strLine);
             }
         }
-       // System.out.println(firstmax);
         secondmax = getMax(firstmax);
         thirdmax = getMax(secondmax);
         System.out.println(firstmax+secondmax+thirdmax);
-
-//Close the input stream
         fstream.close();
     }
 
